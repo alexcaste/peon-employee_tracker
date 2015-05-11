@@ -77,6 +77,15 @@ describe("the divisions detail path", :type => :feature) do
   end
 end
 
+describe("the project detail path", :type => :feature) do
+  it("allows the user to see the details and options for a project") do
+    Project.create(name: "Conquer Hoth")
+    visit('/projects')
+    click_link('Conquer Hoth')
+    expect(page).to have_content("Details for Conquer Hoth")
+  end
+end
+
 describe("the rename employee path", :type => :feature) do
   it("allows the user to rename a employee") do
     Employee.create(name: "Admiral Ozzel")
