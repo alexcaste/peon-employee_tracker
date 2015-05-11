@@ -40,3 +40,12 @@ describe("the employee add path", :type => :feature) do
     expect(page).to have_content("Harry")
   end
 end
+
+describe("the employee add path", :type => :feature) do
+  it("allows the user to add an employee to the database") do
+    Employee.create(name: "Harry")
+    visit('/employees')
+    click_link('Harry')
+    expect(page).to have_content("Details for Harry")
+  end
+end
