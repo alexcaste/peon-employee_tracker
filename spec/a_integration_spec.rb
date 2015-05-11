@@ -41,11 +41,20 @@ describe("the employee add path", :type => :feature) do
   end
 end
 
-describe("the employee add path", :type => :feature) do
-  it("allows the user to add an employee to the database") do
+describe("the employee details path", :type => :feature) do
+  it("allows the user to see the details and options for an emplpoyee") do
     Employee.create(name: "Harry")
     visit('/employees')
     click_link('Harry')
     expect(page).to have_content("Details for Harry")
+  end
+end
+
+describe("the divisions detail path", :type => :feature) do
+  it("allows the user to see the details and options for a division") do
+    Division.create(name: "Death Star")
+    visit('/divisions')
+    click_link('Death Star')
+    expect(page).to have_content("Details for Death Star")
   end
 end
