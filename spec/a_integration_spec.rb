@@ -58,3 +58,25 @@ describe("the divisions detail path", :type => :feature) do
     expect(page).to have_content("Details for Death Star")
   end
 end
+
+describe("the rename employee path", :type => :feature) do
+  it("allows the user to rename a employee") do
+    Employee.create(name: "Admiral Ozzel")
+    visit('/employees')
+    click_link('Admiral Ozzel')
+    fill_in('name', :with => "Admiral Piett")
+    click_button('Update')
+    expect(page).to have_content("Details for Admiral Piett")
+  end
+end
+
+describe("the rename division path", :type => :feature) do
+  it("allows the user to rename a division") do
+    Division.create(name: "Death Star")
+    visit('/divisions')
+    click_link('Death Star')
+    fill_in('name', :with => "Death Star II")
+    click_button('Update')
+    expect(page).to have_content("Details for Death Star II")
+  end
+end
