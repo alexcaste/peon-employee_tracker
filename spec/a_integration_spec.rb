@@ -80,3 +80,25 @@ describe("the rename division path", :type => :feature) do
     expect(page).to have_content("Details for Death Star II")
   end
 end
+
+describe("the delete employee path", :type => :feature) do
+  it("allows the user to delete an employee") do
+    Employee.create(name: "Admiral Ozzel")
+    Employee.create(name: "Admiral Piett")
+    visit('/employees')
+    click_link("Admiral Ozzel")
+    click_button("Delete")
+    expect(page).to have_content("Admiral Piett")
+  end
+end
+
+describe("the delete division path", :type => :feature) do
+  it("allows the user to delete a division") do
+    Division.create(name: "Alderaan")
+    Division.create(name: "Death Star")
+    visit('/divisions')
+    click_link("Alderaan")
+    click_button("Delete")
+    expect(page).to have_content("Death Star")
+  end
+end
