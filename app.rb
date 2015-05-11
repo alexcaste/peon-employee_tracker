@@ -74,8 +74,9 @@ get('/divisions/:id') do
 end
 
 get('/projects/:id') do
-  @employess  = Employee.all
+  @all_employees = Employee.all
   @project = Project.find(params.fetch("id"))
+  @employees = @project.employees
   erb(:project)
 end
 
@@ -97,6 +98,12 @@ patch('/divisions/:id/update') do
   erb(:division)
 end
 
+patch('/projects/:id/update') do
+  @project = Project.find(params.fetch("id"))
+  @project.update({name: params.fetch("name")})
+  erb(:division)
+end
+
 patch('/divisions/:id/assign') do
   division_id = params.fetch("id")
   @division = Division.find(division_id)
@@ -106,6 +113,17 @@ patch('/divisions/:id/assign') do
   @all_employees = Employee.all
   @employees = @division.employees
   erb(:division)
+end
+
+patch('/projects/:id/assign') do
+  project_id = params.fetch("id")
+  @project = Project.find(project_id)
+  employee_id = params.fetch("employee")
+  employee = Employee.find(employee_id)
+  employee.update(project_id: project_id)
+  @all_employees = Employee.all
+  @employees = @project.employees
+  erb(:project)
 end
 
 delete('/employees/:id/delete') do
@@ -122,4 +140,12 @@ delete('/divisions/:id/delete') do
   @division.delete
   @divisions = Division.all
   erb(:divisions)
+end
+
+delete('/projects/:id/delete') do
+  project = params.fetch("id").to_i
+  @project = Project.find(project)
+  @project.delete
+  @projects = Project.all
+  erb(:projects)
 end
