@@ -22,3 +22,21 @@ describe("the division list path", :type => :feature) do
     expect(page).to have_content("R&D")
   end
 end
+
+describe("the division add path", :type => :feature) do
+  it("allows the user to add a division to the database") do
+    visit('/divisions/new')
+    fill_in('name', :with => "R&D")
+    click_button("Add")
+    expect(page).to have_content("R&D")
+  end
+end
+
+describe("the employee add path", :type => :feature) do
+  it("allows the user to add an employee to the database") do
+    visit('/employees/new')
+    fill_in('name', :with => "Harry")
+    click_button("Add")
+    expect(page).to have_content("Harry")
+  end
+end
