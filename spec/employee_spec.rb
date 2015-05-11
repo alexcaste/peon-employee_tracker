@@ -8,4 +8,5 @@ describe(Employee) do
     employee2 = Employee.create({name: "Bob", division_id: division.id})
     expect(division.employees).to eq([employee1, employee2])
   end
+  
 end
