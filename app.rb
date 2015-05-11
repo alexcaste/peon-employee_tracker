@@ -54,6 +54,12 @@ post('/divisions/new') do
   erb(:divisions)
 end
 
+post('/projects/new') do
+  Project.create(name: (params.fetch("name")))
+  @projects = Project.all()
+  erb(:projects)
+end
+
 get('/employees/:id') do
   @divisions = Division.all
   @employee = Employee.find(params.fetch("id"))

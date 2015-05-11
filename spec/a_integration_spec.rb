@@ -23,6 +23,15 @@ describe("the division list path", :type => :feature) do
   end
 end
 
+describe("the project list path", :type => :feature) do
+  it("allows the user to see a list of all projects in the database") do
+    Project.create(name: "Destroy the Rebel Alliance")
+    visit('/')
+    click_link("List of Projects")
+    expect(page).to have_content("Destroy the Rebel Alliance")
+  end
+end
+
 describe("the division add path", :type => :feature) do
   it("allows the user to add a division to the database") do
     visit('/divisions/new')
@@ -38,6 +47,15 @@ describe("the employee add path", :type => :feature) do
     fill_in('name', :with => "Harry")
     click_button("Add")
     expect(page).to have_content("Harry")
+  end
+end
+
+describe("the project add path", :type => :feature) do
+  it("allows the user to add a project to the database") do
+    visit('/projects/new')
+    fill_in('name', :with => "Destroy the Death Star")
+    click_button("Add")
+    expect(page).to have_content("Destroy the Death Star")
   end
 end
 
@@ -124,14 +142,5 @@ describe("the adding a division to an employee path", :type => :feature) do
     select("Sith")
     click_button("Assign")
     expect(page).to have_content("Sith")
-  end
-end
-
-describe("the project list path", :type => :feature) do
-  it("allows the user to see a list of all projects in the database") do
-    Project.create(name: "Destroy the Rebel Alliance")
-    visit('/')
-    click_link("List of Projects")
-    expect(page).to have_content("Destroy the Rebel Alliance")
   end
 end
