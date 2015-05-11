@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Salon-O-Rama</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="wrap" class="container">
+    <%= yield %>
+  </div>
+</body>
+<footer>
+  <div id ="footer">
+    <div class ="row">
+      <div class="text-center">
+        <div class="col-md-6">
+          <a href="/divisions">List of Divisions</a>
+        </div>
+        <div class="col-md-6">
+          <a href="/employees">List of Employees</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="text-center">
+        <div class="col-md-6">
+          <a href="/divisions/new">Add a Division</a>
+        </div>
+        <div class="col-md-6">
+          <a href="/employees/new">Add a Employee</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</html>

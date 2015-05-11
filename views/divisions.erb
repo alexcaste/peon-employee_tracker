@@ -1,0 +1,8 @@
+<h1>List of Divisions</h1>
+<% if @divisions != nil %>
+  <ul>
+    <% @divisions.each() do |division| %>
+    <li><a href="/divisions/<%= division.id %>"><%= division.name() %> </a></li>
+    <% end %>
+  </ul>
+<% end %>
