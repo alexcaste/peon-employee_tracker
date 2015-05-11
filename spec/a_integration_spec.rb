@@ -102,3 +102,27 @@ describe("the delete division path", :type => :feature) do
     expect(page).to have_content("Death Star")
   end
 end
+
+describe("the adding an employee to a division path", :type => :feature) do
+  it("allows the user to add an employee to a division") do
+    Employee.create(name: "Yoda")
+    Division.create(name: "Dagobah")
+    visit('/divisions')
+    click_link("Dagobah")
+    select("Yoda")
+    click_button("Assign")
+    expect(page).to have_content("Yoda")
+  end
+end
+
+describe("the adding a division to an employee path", :type => :feature) do
+  it("allows the user to add a division to an employee") do
+    Employee.create(name: "Anakin")
+    Division.create(name: "Sith")
+    visit('/employees')
+    click_link("Anakin")
+    select("Sith")
+    click_button("Assign")
+    expect(page).to have_content("Sith")
+  end
+end

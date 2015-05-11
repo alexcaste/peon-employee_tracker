@@ -44,6 +44,7 @@ post('/divisions/new') do
 end
 
 get('/employees/:id') do
+  @divisions = Division.all
   @employee = Employee.find(params.fetch("id"))
   erb(:employee)
 end
