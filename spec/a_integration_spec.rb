@@ -126,3 +126,12 @@ describe("the adding a division to an employee path", :type => :feature) do
     expect(page).to have_content("Sith")
   end
 end
+
+describe("the project list path", :type => :feature) do
+  it("allows the user to see a list of all projects in the database") do
+    Project.create(name: "Destroy the Rebel Alliance")
+    visit('/')
+    click_link("List of Projects")
+    expect(page).to have_content("Destroy the Rebel Alliance")
+  end
+end

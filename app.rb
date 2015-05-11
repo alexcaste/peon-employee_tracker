@@ -6,6 +6,7 @@ require "pg"
 require "pry"
 require "./lib/division"
 require "./lib/employee"
+require "./lib/project"
 
 get('/') do
   erb(:index)
@@ -21,6 +22,11 @@ get('/employees') do
   erb(:employees)
 end
 
+get('/projects') do
+  @projects = Project.all()
+  erb(:projects)
+end
+
 get('/divisions/new') do
 
   erb(:division_form)
@@ -29,6 +35,11 @@ end
 get('/employees/new') do
 
   erb(:employee_form)
+end
+
+get('/projects/new') do
+
+  erb(:project_form)
 end
 
 post('/employees/new') do
@@ -54,6 +65,12 @@ get('/divisions/:id') do
   @all_employees = Employee.all
   @employees = @division.employees
   erb(:division)
+end
+
+get('/projects/:id') do
+  @employess  = Employee.all
+  @project = Project.find(params.fetch("id"))
+  erb(:project)
 end
 
 patch('/employees/:id/update') do

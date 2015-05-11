@@ -4,6 +4,7 @@ require "rspec"
 require "sinatra/activerecord"
 require "division"
 require "employee"
+require "project"
 require "pry"
 require "pg"
 
