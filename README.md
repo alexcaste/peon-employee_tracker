@@ -8,7 +8,7 @@ GNU General Public License, version 3 (see below). Copyright (c) 2015 Alexandar 
 
 Description
 
-This app allows a user to create, edit and delete an employee, division and project.  Employees can be assigned to divisions and/or projects.  
+This app allows a user to create, edit and delete an employee, division and project.  Employees can be assigned to divisions and/or projects.  Beware this app can insult you.
 
 Author
 
